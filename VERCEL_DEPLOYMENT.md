@@ -1,58 +1,76 @@
-# Vercel Deployment Guide for Vault Lender Path
+# 🚀 Vercel Deployment Guide for VaultLender
 
-This guide provides step-by-step instructions for deploying the Vault Lender Path application to Vercel.
+This comprehensive guide walks you through deploying the VaultLender FHE-encrypted lending platform to Vercel.
 
-## Prerequisites
+## 📋 Prerequisites
 
-- GitHub account with access to the repository
-- Vercel account (free tier available)
-- Node.js 18+ installed locally (for testing)
+- **GitHub Account** with repository access
+- **Vercel Account** (free tier available)
+- **Node.js 18+** installed locally (for testing)
+- **Web3 Wallet** for testing functionality
 
-## Step 1: Prepare the Repository
+## 🔧 Step 1: Repository Preparation
 
-1. Ensure all changes are committed and pushed to the main branch:
+Ensure all changes are committed and pushed to the main branch:
+
 ```bash
+# Stage all changes
 git add .
+
+# Commit with descriptive message
 git commit -m "Prepare for Vercel deployment"
+
+# Push to main branch
 git push origin main
 ```
 
-## Step 2: Connect to Vercel
+## 🔗 Step 2: Connect to Vercel
 
-1. **Visit Vercel Dashboard**
-   - Go to [vercel.com](https://vercel.com)
-   - Sign in with your GitHub account
+### 2.1 Access Vercel Dashboard
+1. Navigate to [vercel.com](https://vercel.com)
+2. Sign in with your GitHub account
+3. Authorize Vercel to access your repositories
 
-2. **Import Project**
-   - Click "New Project" or "Import Project"
-   - Select "Import Git Repository"
-   - Choose `phoenixNode100/vault-lender-path` from the list
-   - Click "Import"
+### 2.2 Import Project
+1. Click **"New Project"** or **"Import Project"**
+2. Select **"Import Git Repository"**
+3. Choose `phoenixNode100/vault-lender-path` from the list
+4. Click **"Import"**
 
-## Step 3: Configure Build Settings
+## ⚙️ Step 3: Configure Build Settings
 
-1. **Framework Preset**
-   - Framework Preset: `Vite`
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-   - Install Command: `npm install`
+### 3.1 Framework Configuration
+- **Framework Preset**: `Vite`
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- **Install Command**: `npm install`
 
-2. **Root Directory**
-   - Leave as default (root of repository)
+### 3.2 Advanced Settings
+- **Root Directory**: Leave as default (root of repository)
+- **Node.js Version**: 18.x (recommended)
 
-## Step 4: Set Environment Variables
+## 🔐 Step 4: Environment Variables Setup
 
-In the Vercel dashboard, go to Project Settings > Environment Variables and add:
+Navigate to **Project Settings > Environment Variables** and configure:
 
+### Required Variables
+```env
+# Network Configuration
+VITE_CHAIN_ID=11155111
+VITE_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
+
+# Wallet Connect
+VITE_WALLET_CONNECT_PROJECT_ID=YOUR_WALLET_CONNECT_PROJECT_ID
+
+# Optional: Alternative RPC
+VITE_ALT_RPC_URL=https://1rpc.io/sepolia
 ```
-NEXT_PUBLIC_CHAIN_ID=11155111
-NEXT_PUBLIC_RPC_URL=https://sepolia.infura.io/v3/b18fb7e6ca7045ac83c41157ab93f990
-NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=2ec9743d0d0cd7fb94dee1a7e6d33475
-NEXT_PUBLIC_INFURA_API_KEY=b18fb7e6ca7045ac83c41157ab93f990
-NEXT_PUBLIC_RPC_URL=https://1rpc.io/sepolia
-```
 
-**Important**: Make sure to set these for all environments (Production, Preview, Development).
+### Environment Scope
+**Important**: Set these variables for all environments:
+- ✅ **Production**
+- ✅ **Preview** 
+- ✅ **Development**
 
 ## Step 5: Configure Custom Domain (Optional)
 
